@@ -1,0 +1,21 @@
+::-moz-selection {
+  color: #fff;
+  background-color: #5d5d5d;
+}
+::selection {
+  color: #fff;
+  background-color: #5d5d5d;
+}
+html {
+  font-family: Fira sans;
+}
+body {
+  padding-top: 85px;
+}
+h1 {
+  color: #5d5d5d;
+}
+#refresh {
+  font-size: 18px;
+  margin-top: -49px;
+}
