@@ -10,15 +10,11 @@ $(function () {
   var request;
   // Add content
   function addContent(content) {
-    // TODO show text only with active markup
-    // FAILED activate cove view before insert then toggle off
-    $(".btn-codeview").click();
-    $board.summernote('editor.insertText', content);
-    $(".btn-codeview").click();
+    $board.val(content);
   }
   // Reset content
   function resetContent() {
-    $board.summernote('reset');
+    $board.val('');
   }
   // Display Content
   function displayContent(content) {
@@ -64,27 +60,20 @@ $(function () {
       console.log(error);
     });
   }
-  // Initialisation
-  $board.summernote({
-    minHeight: 100, // minimum size
-    focus: true // focus after init
-  });
   getContent();
   // Commit changes
   $save.click(function(e) {
     e.preventDefault();
-    var content = $board.summernote('code');
-    postContent(content);
+    postContent($board.val());
   });
   // Discard last changes
   $discard.click(function(e) {
     e.preventDefault();
-    displayContent();
+    getContent();
   });
   // Refresh content to lastest commit
   $refresh.click(function (e) {
     e.preventDefault();
-    // displayContent();
-    $(".btn-codeview").click();
+    getContent();
   });
 });
