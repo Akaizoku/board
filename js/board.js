@@ -21,9 +21,10 @@ $(function () {
     resetContent();
     addContent(content);
   }
-  // Alert user of errors
+  // Alert user of eventual errors
   function errorReport(error) {
-    // TODO mustache alert
+    // TODO check if working properly
+    Mustache.render($alert.html(), error);
   }
   // Get content from database
   function getContent() {
@@ -37,11 +38,18 @@ $(function () {
     });
     // If data is received successfully
     request.done(function (response) {
-      displayContent(response);
+      if (response) {
+        displayContent(response);
+        $board.focus();
+      } else {
+        var alert = {msg: "An error occured while fetching data form teh database: "+response};
+        errorReport($alert.html(), alert);
+      }
     });
     // Else if request failed
     request.fail(function (error) {
-      console.log(error);
+      var alert = {msg: error};
+      errorReport(alert);
     });
   }
   // Post content to database
@@ -52,14 +60,23 @@ $(function () {
       url: 'api/board.php',
       data: {'content': content}
     });
+    // If query succeeded
     request.done(function (response) {
-      if (response) console.log('Data successfully committed.');
-      else console.log("Error.");
+      if (response) {
+        console.log('Data successfully committed.');
+        $board.focus();
+      } else {
+        alert = {msg: "An error occurred: "+response};
+        errorReport(alert);
+      }
     });
+    // Else if query failed
     request.fail(function (error) {
-      console.log(error);
+      alert = {msg: error};
+      errorReport(alert);
     });
   }
+  // Initialisation
   getContent();
   // Commit changes
   $save.click(function(e) {
