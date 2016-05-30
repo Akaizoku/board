@@ -1,10 +1,11 @@
+::selection,
 ::-moz-selection {
   color: #fff;
   background-color: #5d5d5d;
 }
-::selection {
-  color: #fff;
-  background-color: #5d5d5d;
+html,
+body {
+  height: 100%;
 }
 html {
   font-family: Fira sans;
@@ -15,13 +16,24 @@ body {
 h1 {
   color: #5d5d5d;
 }
-#refresh {
+.btn-refresh {
   font-size: 18px;
   margin-top: -49px;
 }
-#board {
+.board {
   width: 100%;
   min-width: 100%;
   max-width: 100%;
+  min-height: calc(100% - 51px);
+}
+.frame,
+.form-wrapper,
+.form-board,
+.form-group-board,
+.board {
   height: 100%;
+  margin-bottom: -68px;
+}
+.bottom {
+  margin-top : 25px;
 }

@@ -37,11 +37,11 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <h1>Public board</h1>
-        <button class="btn btn-default pull-right" id="refresh"><i class="glyphicon glyphicon-refresh"></i></button>
+        <button class="btn btn-default pull-right btn-refresh" id="refresh"><i class="glyphicon glyphicon-refresh"></i></button>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="content-inner">
+    <div class="container-fluid frame">
+      <div class="content-inner frame">
         <template id="alert">
           <div class="alert alert-danger alert-dismissible fade in">
             <span>{{msg}}</span>
@@ -51,9 +51,9 @@
           </div>
         </template>
         <div class="form-wrapper">
-          <form action="api/board.php" method="post" id="form">
-            <div class="form-group">
-              <textarea class="form-control" name="board" id="board"></textarea>
+          <form action="api/board.php" method="post" class="form-board" id="form">
+            <div class="form-group form-group-board">
+              <textarea class="form-control board" name="board" id="board"></textarea>
             </div>
             <div class="form-group bottom">
               <button class="btn btn-default pull-left" id="discard">Discard changes</button>

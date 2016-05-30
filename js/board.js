@@ -1,11 +1,11 @@
-$(function () {
-  "use strict";
+$(function() {
+  'use strict';
   // Cache of DOM
-  var $board = $('#board');
-  var $refresh = $('#refresh');
-  var $discard = $('#discard');
-  var $save = $('#save');
-  var $alert = $('#alert');
+  var $board    = $('#board'),
+      $refresh  = $('#refresh'),
+      $discard  = $('#discard'),
+      $save     = $('#save'),
+      $alert    = $('#alert');
   // Declaration of variables
   var request;
   // Add content
@@ -37,7 +37,7 @@ $(function () {
       data: 'content'
     });
     // If data is received successfully
-    request.done(function (response) {
+    request.done(function(response) {
       if (response) {
         displayContent(response);
         $board.focus();
@@ -47,7 +47,7 @@ $(function () {
       }
     });
     // Else if request failed
-    request.fail(function (error) {
+    request.fail(function(error) {
       var alert = {msg: error};
       errorReport(alert);
     });
@@ -61,17 +61,17 @@ $(function () {
       data: {'content': content}
     });
     // If query succeeded
-    request.done(function (response) {
+    request.done(function(response) {
       if (response) {
         console.log('Data successfully committed.');
         $board.focus();
       } else {
-        alert = {msg: "An error occurred: "+response};
+        alert = {msg: "An error occurred: " + response};
         errorReport(alert);
       }
     });
     // Else if query failed
-    request.fail(function (error) {
+    request.fail(function(error) {
       alert = {msg: error};
       errorReport(alert);
     });
